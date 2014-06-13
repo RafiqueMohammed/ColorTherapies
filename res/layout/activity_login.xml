@@ -1,0 +1,82 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}"
+    android:orientation="vertical"
+    android:gravity="center"
+      >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/splash" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+     >
+
+    <EditText
+        android:id="@+id/txt_login_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/login_username"
+        android:inputType="textEmailAddress"
+        android:textSize="13sp"
+        android:layout_marginTop="10dp" 
+        android:imeOptions="flagNoExtractUi"/>
+
+    <EditText
+        android:id="@+id/txt_login_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/login_password"
+        android:inputType="textPassword"
+        android:textSize="13sp"
+        android:layout_marginTop="20dp" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_torq"
+            android:text="@string/login"
+            android:textColor="#FFFFFF" />
+    
+    <LinearLayout android:orientation="horizontal"
+    android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginTop="20dp"
+  >
+
+      <Button
+          android:id="@+id/btn_forgot_password"
+          style="@style/MyStyle"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_gravity="left"
+          android:layout_weight="1"
+          android:background="@drawable/btn_default"
+          android:padding="10dp"
+          android:text="@string/login_forgot_password"
+          android:textSize="13sp" />
+
+      <Button
+          android:id="@+id/btn_sign_up"
+          style="@style/MyStyle"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:background="@drawable/btn_dark"
+          android:padding="10dp"
+          android:text="@string/login_signup"
+          android:textSize="13sp" />
+
+</LinearLayout>
+
+</LinearLayout>
+</LinearLayout>
