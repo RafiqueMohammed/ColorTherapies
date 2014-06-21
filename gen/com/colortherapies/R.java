@@ -41,11 +41,13 @@ public final class R {
         public static final int gestureOverlayView1=0x7f08000f;
         public static final int health_grid=0x7f080002;
         public static final int imageView1=0x7f080005;
-        public static final int img_splash=0x7f08001b;
-        public static final int mainactivity_menu=0x7f08001d;
-        public static final int register_agree_terms=0x7f080018;
-        public static final int register_already_login=0x7f080019;
-        public static final int register_create_account=0x7f08001a;
+        public static final int img_splash=0x7f08001d;
+        public static final int mainactivity_menu=0x7f08001f;
+        public static final int register_agree_terms=0x7f08001a;
+        public static final int register_already_login=0x7f08001b;
+        public static final int register_city=0x7f080018;
+        public static final int register_country=0x7f080019;
+        public static final int register_create_account=0x7f08001c;
         public static final int register_dob=0x7f080016;
         public static final int register_email=0x7f08000b;
         public static final int register_female=0x7f080015;
@@ -59,7 +61,7 @@ public final class R {
         public static final int txt_create_account=0x7f080010;
         public static final int txt_dashboard_header=0x7f080000;
         public static final int txt_date=0x7f08000d;
-        public static final int txt_initialization=0x7f08001c;
+        public static final int txt_initialization=0x7f08001e;
         public static final int txt_login_email=0x7f080006;
         public static final int txt_login_password=0x7f080007;
     }
@@ -75,7 +77,7 @@ public final class R {
         public static final int main_menu=0x7f070000;
     }
     public static final class string {
-        public static final int Create=0x7f050011;
+        public static final int Create=0x7f050013;
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050001;
         public static final int login=0x7f050008;
@@ -83,12 +85,14 @@ public final class R {
         public static final int login_password=0x7f050006;
         public static final int login_signup=0x7f050009;
         public static final int login_username=0x7f050005;
-        public static final int register_agree_terms=0x7f050010;
-        public static final int register_already_login=0x7f050013;
+        public static final int register_agree_terms=0x7f050012;
+        public static final int register_already_login=0x7f050015;
+        public static final int register_city=0x7f050010;
+        public static final int register_country=0x7f050011;
         public static final int register_dob=0x7f05000e;
         public static final int register_fullname=0x7f05000c;
         public static final int register_gender=0x7f05000d;
-        public static final int register_mandatory=0x7f050012;
+        public static final int register_mandatory=0x7f050014;
         public static final int register_phone=0x7f05000f;
         public static final int register_retype_password=0x7f05000b;
         public static final int string_dashboard_header=0x7f050003;

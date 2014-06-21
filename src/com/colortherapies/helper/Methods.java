@@ -1,5 +1,6 @@
-package com.colortherapies;
+package com.colortherapies.helper;
 
+import com.colortherapies.R;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,11 +11,10 @@ import android.widget.Toast;
 
 public class Methods {
 
-	public static final int FRESH_INSTALL = 0; // 0-fresh install
-	public static final int NO_PREMIUM = 0; // 0- No Premium
-	public static final int NO_LOGIN = 0; // 0- No Login
-	public static final int ANALYTICS_SENT = 0; // 0-not sent
 
+
+	
+	
 	public static boolean isInternetConnected(Context context) {
 		ConnectivityManager connectivity = (ConnectivityManager) context
 				.getSystemService(Context.CONNECTIVITY_SERVICE);

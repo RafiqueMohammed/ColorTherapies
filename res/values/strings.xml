@@ -17,6 +17,8 @@
     <string name="register_gender">Gender</string>
     <string name="register_dob">Date Of Birth</string>
     <string name="register_phone">Mobile Number</string>
+    <string name="register_city">City</string>
+    <string name="register_country">Country</string>
     <string name="register_agree_terms">You agree with our terms and conditions</string>
     <string name="Create">Create Account</string>
     <string name="register_mandatory">* All the fields are mandatory</string>

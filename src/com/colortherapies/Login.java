@@ -4,22 +4,16 @@ import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.HttpConnection;
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
+import com.colortherapies.helper.Methods;
+
 import android.app.Activity;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -34,6 +28,7 @@ public class Login extends Activity implements OnClickListener {
 
 	Button login,sign_up,forgot_password;
 	EditText email,password;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,7 +44,7 @@ public class Login extends Activity implements OnClickListener {
 		login.setOnClickListener(this);
 		sign_up.setOnClickListener(this);
 		
-		
+	
 	}
 	
 	

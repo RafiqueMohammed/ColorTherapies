@@ -1,5 +1,7 @@
 package com.colortherapies;
 
+import com.colortherapies.helper.Methods;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
