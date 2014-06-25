@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.http.HttpResponse;
@@ -21,8 +22,11 @@ import org.apache.http.params.HttpParams;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.colortherapies.helper.Default;
+import com.colortherapies.helper.L;
 import com.colortherapies.helper.MCrypt;
 import com.colortherapies.helper.Methods;
+import com.colortherapies.helper.AccountPreference;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -39,12 +43,11 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Registration extends Activity implements OnClickListener {
 	TextView txt_header;
 	Button login, add_acc;
-	EditText fname, email, pass, re_pass, phone, dob,city,country;
+	EditText fname, email, pass, re_pass, phone, dob, city, country;
 	RadioButton male, female;
 	RadioGroup gender;
 	CheckBox terms;
@@ -75,8 +78,8 @@ public class Registration extends Activity implements OnClickListener {
 		re_pass = (EditText) findViewById(R.id.register_retype_password);
 		phone = (EditText) findViewById(R.id.register_phone);
 		dob = (EditText) findViewById(R.id.register_dob);
-		city=(EditText) findViewById(R.id.register_city);
-		country=(EditText) findViewById(R.id.register_country);
+		city = (EditText) findViewById(R.id.register_city);
+		country = (EditText) findViewById(R.id.register_country);
 
 		gender = (RadioGroup) findViewById(R.id.register_gender);
 		male = (RadioButton) findViewById(R.id.register_male);
@@ -105,7 +108,7 @@ public class Registration extends Activity implements OnClickListener {
 	}
 
 	void sendRegistration() {
-		String txt_fname, txt_email, txt_pass, txt_re_pass, txt_phone, txt_dob, txt_gender,txt_city,txt_country;
+		String txt_fname, txt_email, txt_pass, txt_re_pass, txt_phone, txt_dob, txt_gender, txt_city, txt_country;
 
 		int selectedGenderID = gender.getCheckedRadioButtonId();
 		if (selectedGenderID == R.id.register_male) {
@@ -129,56 +132,50 @@ public class Registration extends Activity implements OnClickListener {
 		txt_re_pass = re_pass.getText().toString();
 		txt_phone = phone.getText().toString();
 		txt_dob = dob.getText().toString();
-		txt_city=city.getText().toString();
-		txt_country=country.getText().toString();
+		txt_city = city.getText().toString();
+		txt_country = country.getText().toString();
 
 		if (txt_fname.equals("")) {
-			Methods.showAlertDialog(this, "Required", "Enter Your Full Name",
-					false);
+			Methods.showAlert(this, "Required", "Enter Your Full Name", false);
 			return;
 		} else if (txt_email.equals("")) {
-			Methods.showAlertDialog(this, "Required",
-					"Enter Your Valid Email ID", false);
+			Methods.showAlert(this, "Required", "Enter Your Valid Email ID",
+					false);
 			return;
 		} else if (txt_pass.equals("")) {
-			Methods.showAlertDialog(this, "Required", "Enter Your Password",
-					false);
+			Methods.showAlert(this, "Required", "Enter Your Password", false);
 			return;
 		} else if (txt_re_pass.equals("")) {
-			Methods.showAlertDialog(this, "Required", "Retype Your Password",
-					false);
+			Methods.showAlert(this, "Required", "Retype Your Password", false);
 			return;
 		} else if (txt_gender.equals("")) {
-			Methods.showAlertDialog(this, "Required",
-					"Please Select Your Gender", false);
+			Methods.showAlert(this, "Required", "Please Select Your Gender",
+					false);
 			return;
 		} else if (txt_dob.equals("")) {
-			Methods.showAlertDialog(this, "Required",
+			Methods.showAlert(this, "Required",
 					"Please Select Your Date Of Birth", false);
 			return;
 		} else if (txt_phone.equals("")) {
-			Methods.showAlertDialog(this, "Required",
-					"Enter Valid Mobile Number", false);
+			Methods.showAlert(this, "Required", "Enter Valid Mobile Number",
+					false);
 			return;
-		}else if (txt_city.equals("")) {
-			Methods.showAlertDialog(this, "Required",
-					"Enter Your City Name", false);
+		} else if (txt_city.equals("")) {
+			Methods.showAlert(this, "Required", "Enter Your City Name", false);
 			return;
-		}
-		else if (txt_country.equals("")) {
-			Methods.showAlertDialog(this, "Required",
-					"Enter Your Country Name", false);
+		} else if (txt_country.equals("")) {
+			Methods.showAlert(this, "Required", "Enter Your Country Name",
+					false);
 			return;
-		}
-		else if (!txt_pass.equals(txt_re_pass)) {
-			Methods.showAlertDialog(
+		} else if (!txt_pass.equals(txt_re_pass)) {
+			Methods.showAlert(
 					this,
 					"Password Not Match",
 					"Your given password doesn't match. Please retype your password.",
 					false);
 			return;
 		} else if (!terms.isChecked()) {
-			Methods.showAlertDialog(this, "Terms and Conditions",
+			Methods.showAlert(this, "Terms and Conditions",
 					"You must agree to our terms and conditions", false);
 			return;
 		}
@@ -198,7 +195,7 @@ public class Registration extends Activity implements OnClickListener {
 		}
 
 		String[] info = { txt_fname, txt_email, txt_pass, txt_phone, txt_dob,
-				txt_gender, txt_city,txt_country, captcha_token };
+				txt_gender, txt_city, txt_country, captcha_token };
 
 		new sendToCloud().execute(info);
 
@@ -223,7 +220,7 @@ public class Registration extends Activity implements OnClickListener {
 		@Override
 		protected JSONObject doInBackground(String... params) {
 			// TODO Auto-generated method stub
-			String txt_fname, txt_email, txt_pass, txt_phone, txt_dob, txt_gender, city,country, captcha_token;
+			String txt_fname, txt_email, txt_pass, txt_phone, txt_dob, txt_gender, city, country, captcha_token;
 			txt_fname = params[0];
 			txt_email = params[1];
 			txt_pass = params[2];
@@ -231,7 +228,7 @@ public class Registration extends Activity implements OnClickListener {
 			txt_dob = params[4];
 			txt_gender = params[5];
 			city = params[6];
-			country=params[7];
+			country = params[7];
 			captcha_token = params[8];
 
 			HttpClient http;
@@ -242,7 +239,7 @@ public class Registration extends Activity implements OnClickListener {
 			HttpConnectionParams.setSoTimeout(p, 20000);
 
 			http = new DefaultHttpClient(p);
-			post = new HttpPost("http://192.168.0.200/rest/v1/registration/add");
+			post = new HttpPost(Default.REGISTRATION_URL);
 
 			List<NameValuePair> param = new ArrayList<NameValuePair>();
 			param.add(new BasicNameValuePair("fullname", txt_fname));
@@ -254,6 +251,7 @@ public class Registration extends Activity implements OnClickListener {
 			param.add(new BasicNameValuePair("city", city));
 			param.add(new BasicNameValuePair("country", country));
 			String output = "";
+			JSONObject json_output = null;
 			try {
 				UrlEncodedFormEntity entity = new UrlEncodedFormEntity(param);
 				post.setEntity(entity);
@@ -264,82 +262,121 @@ public class Registration extends Activity implements OnClickListener {
 				int status = response.getStatusLine().getStatusCode();
 				Log.d("ARR", "Status :" + status);
 				BufferedReader br;
-				
-				if (status == 201){
-					
-					 br = new BufferedReader(
-								new InputStreamReader(response.getEntity()
-										.getContent()));
-						String data = "", tmp="";
-						while ((tmp = br.readLine()) != null) {
-							data += tmp;
-						}
-						output=data.toString();
-						Log.d("ARR", "Response :" + data.toString());
-						 Log.d("ARR","Content Type :"+response.getFirstHeader("Content-Type").getValue());
-						 Log.d("ARR","Authorization :"+response.getFirstHeader("Authorization").getValue());
-				}else
-					if(status == 200) {
-					br = new BufferedReader(
-							new InputStreamReader(response.getEntity()
-									.getContent()));
-					String data = "", tmp="";
+
+				if (status == 201) {
+					br = new BufferedReader(new InputStreamReader(response
+							.getEntity().getContent()));
+					String data = "", tmp = "";
 					while ((tmp = br.readLine()) != null) {
 						data += tmp;
 					}
-					output=data.toString();
-					
-					Log.d("ARR", "Response :" + data.toString());
 
-				}else if(status==400){
-					output="{\"status\":\"no\",\"result\":\"Invalid Type Request\"}";
-				}else if(status==404){
-					output="{\"status\":\"no\",\"result\":\"No such request found\"}";
-				}else if(status==500){
-					output="{\"status\":\"no\",\"result\":\"Server is temporarily down. Please try again later\"}";
+					json_output = new JSONObject(data.toString());
+					json_output
+							.put("Authorization",
+									response.getFirstHeader("Authorization")
+											.getValue());
+
+				} else if (status == 200) {
+					br = new BufferedReader(new InputStreamReader(response
+							.getEntity().getContent()));
+					String data = "", tmp = "";
+					while ((tmp = br.readLine()) != null) {
+						data += tmp;
+					}
+					output = data.toString();
+
+					json_output = new JSONObject(output);
+				} else if (status == 400) {
+					output = "{\"status\":\"no\",\"result\":\"Invalid Type Request\"}";
+					json_output = new JSONObject(output);
+				} else if (status == 404) {
+					output = "{\"status\":\"no\",\"result\":\"No such request found\"}";
+					json_output = new JSONObject(output);
+				} else if (status == 500) {
+					output = "{\"status\":\"no\",\"result\":\"Server is temporarily down. Please try again later\"}";
+					json_output = new JSONObject(output);
+				} else if (status == 503) {
+					output = "{\"status\":\"no\",\"result\":\"Server is temporarily down. Please try again later\"}";
+					json_output = new JSONObject(output);
 				}
-				
 
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
-				output="{\"status\":\"no\",\"result\":\"UnsupportedEncodingException Occured. Please Report Us\"}";
+				output = "{\"status\":\"no\",\"result\":\"UnsupportedEncodingException Occured. Please Report Us\"}";
+				try {
+					json_output = new JSONObject(output);
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			} catch (ClientProtocolException e) {
 				// TODO Auto-generated catch block
-				output="{\"status\":\"no\",\"result\":\"ClientProtocolException Occured. Please Report Us\"}";
+				output = "{\"status\":\"no\",\"result\":\"ClientProtocolException Occured. Please Report Us\"}";
+				try {
+					json_output = new JSONObject(output);
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				output="{\"status\":\"no\",\"result\":\"IOException Occured. Please Report Us\"}";
-			}
-
-			try {
-				return new JSONObject(output);
+				output = "{\"status\":\"no\",\"result\":\"IOException Occured. Please Report Us\"}";
+				try {
+					json_output = new JSONObject(output);
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
-				Toast.makeText(Registration.this,"Unable to parse output from the server. Please Report Us", Toast.LENGTH_LONG).show();
-				return null;
+				e.printStackTrace();
 			}
+
+			return json_output;
 		}
 
 		@Override
 		protected void onPostExecute(JSONObject result) {
 			// TODO Auto-generated method stub
 			pd.dismiss();
-			if(result!=null){
-				try {
-					if(result.getString("status")=="no"){
-						
-					}else if(result.getString("status")=="ok"){
-						Log.d("ARR","Email"+result.getString("email"));
-						Log.d("ARR","activation from"+result.getString("activation"));
-						Log.d("ARR","expiration on"+result.getString("expiration"));
-					}
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					Toast.makeText(Registration.this,"Unable to parse output. Error #3505 occured. Please Report Us", Toast.LENGTH_LONG).show();
-					
+			try {
+
+				if (result.getString("status").equals("no")) {
+					L.t(Registration.this, result.getString("result"));
+
+				} else if (result.getString("status").equals("ok")) {
+
+					HashMap<String, String> hash = new HashMap<>();
+					hash.put("Authorization", result.getString("Authorization"));
+					hash.put("activation", result.getString("activation"));
+					hash.put("expiration", result.getString("expiration"));
+					hash.put("username", result.getString("email"));
+					hash.put("isPremium", result.getString("isPremium"));
+
+					AccountPreference mypref = new AccountPreference(
+							Registration.this);
+					mypref.addAccountPreference(hash);
+					mypref.printAccountPreference();
+					Methods.AlertWithRedirect(Registration.this, "Thank You!",
+							"You account has been successfully registered",
+							new Dashboard(), true);
+
+				} else {
+					Log.d("ARR", "Else my result will be " + result.toString());
+					Log.d("ARR",
+							"Seperating status " + result.getString("status"));
+					Log.d("ARR",
+							"Seperating email " + result.getString("email"));
 				}
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				L.t(Registration.this,
+						"Unable to parse output. Error #3505 occured. Please Report Us");
+
 			}
+
 			super.onPostExecute(result);
 		}
 

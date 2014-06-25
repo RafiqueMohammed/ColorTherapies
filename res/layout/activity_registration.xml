@@ -99,7 +99,7 @@ android:orientation="vertical"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="sans-serif-condensed"
-        android:text="Male" />
+        android:text="@string/register_gender_male" />
 
     <RadioButton
         android:id="@+id/register_female"
@@ -107,7 +107,7 @@ android:orientation="vertical"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="sans-serif-condensed"
-        android:text="Female" />
+        android:text="@string/register_gender_male" />
 
 </RadioGroup>
 
@@ -137,7 +137,6 @@ android:orientation="vertical"
     android:id="@+id/register_phone"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:ems="10"
     android:inputType="phone" />
 
 <TextView
@@ -152,8 +151,7 @@ android:orientation="vertical"
     android:id="@+id/register_city"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:ems="10"
-    android:inputType="phone" />
+    android:inputType="textCapWords" />
 
 <TextView
     android:paddingTop="10dp"
@@ -167,8 +165,7 @@ android:orientation="vertical"
     android:id="@+id/register_country"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:ems="10"
-    android:inputType="phone" />
+    android:inputType="textCapWords" />
 
 
 <CheckBox

@@ -15,6 +15,8 @@
     <string name="register_retype_password">Confirm Password</string>
     <string name="register_fullname">Full Name</string>
     <string name="register_gender">Gender</string>
+    <string name="register_gender_male">Male</string>
+    <string name="register_gender_female">Female</string>
     <string name="register_dob">Date Of Birth</string>
     <string name="register_phone">Mobile Number</string>
     <string name="register_city">City</string>
