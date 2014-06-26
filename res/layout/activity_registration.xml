@@ -63,7 +63,7 @@ android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:inputType="textPassword" />
-<TextView
+ <TextView
     android:fontFamily="sans-serif-condensed"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -75,7 +75,7 @@ android:orientation="vertical"
     android:id="@+id/register_password"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:inputType="textPassword" />
+    android:inputType="textPassword" /> 
 
 <TextView
      android:fontFamily="sans-serif-condensed"
@@ -107,7 +107,7 @@ android:orientation="vertical"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="sans-serif-condensed"
-        android:text="@string/register_gender_male" />
+        android:text="@string/register_gender_female" />
 
 </RadioGroup>
 
@@ -119,11 +119,18 @@ android:orientation="vertical"
     android:text="@string/register_dob"
     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-<EditText
+<!-- <EditText
     android:id="@+id/register_dob"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:inputType="date" />
+    android:inputType="date" /> -->
+
+<DatePicker
+    android:id="@+id/register_dob"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:calendarViewShown="false"
+    android:startYear="1940"/>
 
 <TextView
     android:paddingTop="10dp"

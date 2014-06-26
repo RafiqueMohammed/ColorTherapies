@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+        android:id="@+id/display_screen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+            android:layout_below="@id/txt_dashboard_header"
+            android:gravity="center_horizontal"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp" >
+            
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Health" />
+
+                <GridView
+                    android:id="@+id/health_grid"
+                    android:layout_width="165dp"
+                    android:layout_height="50dp"
+                    android:columnWidth="30dp"
+                    android:horizontalSpacing="5dp"
+                    android:numColumns="3"
+                    android:layout_gravity="center_horizontal"
+                    android:stretchMode="spacingWidth" >
+                </GridView>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Finance" />
+
+                <GridView
+                    android:id="@+id/finance_grid"
+                    android:layout_width="165dp"
+                    android:layout_height="50dp"
+                    android:columnWidth="30dp"
+                    android:horizontalSpacing="5dp"
+                    android:numColumns="3"
+                    android:layout_gravity="center_horizontal"
+                    android:stretchMode="spacingWidth" >
+                </GridView>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Relationship  " />
+
+                <GridView
+                    android:id="@+id/relationship_grid"
+                    android:layout_width="165dp"
+                    android:layout_height="50dp"
+                    android:columnWidth="30dp"
+                    android:horizontalSpacing="5dp"
+                    android:numColumns="3"
+                    android:layout_gravity="center_horizontal"
+                    android:stretchMode="spacingWidth" >
+                </GridView>
+            </TableRow>
+            
+            </TableLayout>
+    </LinearLayout>
+
+</LinearLayout>

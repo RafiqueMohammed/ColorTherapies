@@ -1,5 +1,7 @@
 package com.colortherapies.helper;
 
+import java.util.List;
+
 import com.colortherapies.R;
 
 import android.app.Activity;
@@ -10,14 +12,13 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.view.ContextThemeWrapper;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Toast;
 
 public class Methods {
 
-
-
-	
-	
 	public static boolean isInternetConnected(Context context) {
 		ConnectivityManager connectivity = (ConnectivityManager) context
 				.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -37,8 +38,8 @@ public class Methods {
 		Toast.makeText(c, msg, Toast.LENGTH_LONG).show();
 	}
 
-	public static void showAlert(Context context, String title,
-			String message, Boolean status) {
+	public static void showAlert(Context context, String title, String message,
+			Boolean status) {
 
 		AlertDialog alertDialog = new AlertDialog.Builder(
 				new ContextThemeWrapper(context,
@@ -65,9 +66,9 @@ public class Methods {
 		// Showing Alert Message
 		alertDialog.show();
 	}
-	
+
 	public static void AlertWithRedirect(final Context context, String title,
-			String message,final Activity page, Boolean status) {
+			String message, final Activity page, Boolean status) {
 
 		AlertDialog alertDialog = new AlertDialog.Builder(
 				new ContextThemeWrapper(context,
@@ -88,7 +89,10 @@ public class Methods {
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						dialog.dismiss();
-						context.startActivity(new Intent(context,page.getClass()).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
+						context.startActivity(new Intent(context, page
+								.getClass())
+								.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+										| Intent.FLAG_ACTIVITY_SINGLE_TOP));
 						((Activity) context).finish();
 					}
 				});
@@ -97,4 +101,44 @@ public class Methods {
 		alertDialog.show();
 	}
 
-}
+	public static class DashboardColorAdapter extends BaseAdapter {
+		Context c;
+		List<View> mView;
+
+		public DashboardColorAdapter(Context c, List<View> mView) {
+			this.c = c;
+			this.mView = mView;
+
+		}
+
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return mView.size();
+		}
+
+		@Override
+		public Object getItem(int position) {
+			// TODO Auto-generated method stub
+			return mView.get(position);
+		}
+
+		@Override
+		public long getItemId(int position) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			// TODO Auto-generated method stub
+			convertView = mView.get(position);
+
+			return convertView;
+		}
+	}
+	}
+
+
+
+

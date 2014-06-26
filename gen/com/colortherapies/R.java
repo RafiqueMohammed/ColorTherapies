@@ -37,12 +37,13 @@ public final class R {
         public static final int btn_openDate=0x7f08000e;
         public static final int btn_sign_up=0x7f08000a;
         public static final int career_grid=0x7f080001;
+        public static final int display_screen=0x7f08001f;
         public static final int finance_grid=0x7f080003;
         public static final int gestureOverlayView1=0x7f08000f;
         public static final int health_grid=0x7f080002;
         public static final int imageView1=0x7f080005;
         public static final int img_splash=0x7f08001d;
-        public static final int mainactivity_menu=0x7f08001f;
+        public static final int mainactivity_menu=0x7f080020;
         public static final int register_agree_terms=0x7f08001a;
         public static final int register_already_login=0x7f08001b;
         public static final int register_city=0x7f080018;
@@ -72,6 +73,7 @@ public final class R {
         public static final int activity_main=0x7f030003;
         public static final int activity_registration=0x7f030004;
         public static final int activity_splash_screen=0x7f030005;
+        public static final int test=0x7f030006;
     }
     public static final class menu {
         public static final int main_menu=0x7f070000;

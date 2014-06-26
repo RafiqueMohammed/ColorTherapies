@@ -39,6 +39,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -47,11 +48,12 @@ import android.widget.TextView;
 public class Registration extends Activity implements OnClickListener {
 	TextView txt_header;
 	Button login, add_acc;
-	EditText fname, email, pass, re_pass, phone, dob, city, country;
+	EditText fname, email, pass, re_pass, phone, city, country;
 	RadioButton male, female;
 	RadioGroup gender;
 	CheckBox terms;
 
+	DatePicker dob;
 	String captcha_ref_key, captcha_token;
 
 	@Override
@@ -77,7 +79,7 @@ public class Registration extends Activity implements OnClickListener {
 		pass = (EditText) findViewById(R.id.register_password);
 		re_pass = (EditText) findViewById(R.id.register_retype_password);
 		phone = (EditText) findViewById(R.id.register_phone);
-		dob = (EditText) findViewById(R.id.register_dob);
+		dob = (DatePicker) findViewById(R.id.register_dob);
 		city = (EditText) findViewById(R.id.register_city);
 		country = (EditText) findViewById(R.id.register_country);
 
@@ -119,19 +121,18 @@ public class Registration extends Activity implements OnClickListener {
 			txt_gender = "";
 		}
 
-		/*
-		 * Log.d("ARR","Fname : "+fname.getText()+"email : "+email.getText()+
-		 * "pass : "+pass.getText());
-		 * Log.d("ARR","re_pass : "+re_pass.getText()+
-		 * "phone : "+phone.getText()+"dob : "+dob.getText());
-		 */
 
+		int   day  = dob.getDayOfMonth();
+        int   month= dob.getMonth() + 1;
+        int   year = dob.getYear();
+		
 		txt_fname = fname.getText().toString();
 		txt_email = email.getText().toString();
 		txt_pass = pass.getText().toString();
 		txt_re_pass = re_pass.getText().toString();
 		txt_phone = phone.getText().toString();
-		txt_dob = dob.getText().toString();
+		txt_dob = year+"-"+month+"-"+day;
+		L.t(Registration.this,"Your datepicker "+txt_dob);
 		txt_city = city.getText().toString();
 		txt_country = country.getText().toString();
 
@@ -152,7 +153,7 @@ public class Registration extends Activity implements OnClickListener {
 			Methods.showAlert(this, "Required", "Please Select Your Gender",
 					false);
 			return;
-		} else if (txt_dob.equals("")) {
+		} else if (txt_dob.equals("--")) {
 			Methods.showAlert(this, "Required",
 					"Please Select Your Date Of Birth", false);
 			return;
@@ -277,7 +278,7 @@ public class Registration extends Activity implements OnClickListener {
 									response.getFirstHeader("Authorization")
 											.getValue());
 
-				} else if (status == 200) {
+				} else if (status == 200 || status == 503) {
 					br = new BufferedReader(new InputStreamReader(response
 							.getEntity().getContent()));
 					String data = "", tmp = "";
@@ -296,10 +297,7 @@ public class Registration extends Activity implements OnClickListener {
 				} else if (status == 500) {
 					output = "{\"status\":\"no\",\"result\":\"Server is temporarily down. Please try again later\"}";
 					json_output = new JSONObject(output);
-				} else if (status == 503) {
-					output = "{\"status\":\"no\",\"result\":\"Server is temporarily down. Please try again later\"}";
-					json_output = new JSONObject(output);
-				}
+				} 
 
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block

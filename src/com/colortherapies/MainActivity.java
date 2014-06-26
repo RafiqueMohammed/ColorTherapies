@@ -21,7 +21,9 @@ public class MainActivity extends Activity{
 	int year=cal.get(Calendar.YEAR);
 	TextView date_txt;
 	Button open;
+	
 DatePickerDialog.OnDateSetListener listener;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

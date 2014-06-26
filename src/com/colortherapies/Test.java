@@ -4,27 +4,22 @@ import java.util.List;
 
 import org.json.JSONException;
 
-import com.colortherapies.helper.AccountPreference;
 import com.colortherapies.helper.ColorView;
 import com.colortherapies.helper.Methods;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
 
-public class Dashboard extends Activity {
+public class Test extends Activity {
 
-	AccountPreference acc_prefs;
 	GridView HGrid, RGrid, FGrid;
 	List<View> HList, RList, FList;
 	ColorView colorView;
 	String decode = "{\"health\":[\"#FFCCBB\",\"#99bbcc\",\"#2211FF\"],\"relationship\":[\"#1FFCBB\",\"#F9CCBB\",\"#992BCC\"],\"finance\":[\"#FFCC00\",\"#559922\",\"#929b9C\"]}";
 	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -55,22 +50,5 @@ public class Dashboard extends Activity {
 		RGrid.setAdapter(new Methods.DashboardColorAdapter(this,RList));
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// TODO Auto-generated method stub
-		MenuInflater inf = getMenuInflater();
-		inf.inflate(R.menu.main_menu, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// TODO Auto-generated method stub
-		if (item.getItemId() == R.id.mainactivity_menu) {
-			Intent i = new Intent(getApplicationContext(), MainActivity.class);
-			startActivity(i);
-		}
-		return super.onOptionsItemSelected(item);
-	}
 
 }
