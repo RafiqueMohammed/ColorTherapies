@@ -10,12 +10,14 @@ import com.colortherapies.helper.Methods;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
+import android.widget.TextView;
 
 public class Dashboard extends Activity {
 
@@ -24,15 +26,18 @@ public class Dashboard extends Activity {
 	List<View> HList, RList, FList;
 	ColorView colorView;
 	String decode = "{\"health\":[\"#FFCCBB\",\"#99bbcc\",\"#2211FF\"],\"relationship\":[\"#1FFCBB\",\"#F9CCBB\",\"#992BCC\"],\"finance\":[\"#FFCC00\",\"#559922\",\"#929b9C\"]}";
-	
+	TextView header;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.test);
+		setContentView(R.layout.activity_dashboard);
 		HGrid = (GridView) findViewById(R.id.health_grid);
 		RGrid = (GridView) findViewById(R.id.relationship_grid);
 		FGrid = (GridView) findViewById(R.id.finance_grid);
-		
+
+
+		header= (TextView) findViewById(R.id.txt_dashboard_header);
+header.setTypeface(Typeface.createFromAsset(getAssets(),"font/Helvetica Neue UltraLight.ttf"));
 		try {
 			colorView = new ColorView(this, decode);
 			

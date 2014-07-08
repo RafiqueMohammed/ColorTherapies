@@ -32,39 +32,44 @@ public final class R {
         public static final int success=0x7f02000f;
     }
     public static final class id {
-        public static final int btn_forgot_password=0x7f080009;
-        public static final int btn_login=0x7f080008;
-        public static final int btn_openDate=0x7f08000e;
-        public static final int btn_sign_up=0x7f08000a;
-        public static final int career_grid=0x7f080001;
-        public static final int display_screen=0x7f08001f;
-        public static final int finance_grid=0x7f080003;
-        public static final int gestureOverlayView1=0x7f08000f;
-        public static final int health_grid=0x7f080002;
-        public static final int imageView1=0x7f080005;
-        public static final int img_splash=0x7f08001d;
-        public static final int mainactivity_menu=0x7f080020;
-        public static final int register_agree_terms=0x7f08001a;
-        public static final int register_already_login=0x7f08001b;
-        public static final int register_city=0x7f080018;
-        public static final int register_country=0x7f080019;
-        public static final int register_create_account=0x7f08001c;
-        public static final int register_dob=0x7f080016;
-        public static final int register_email=0x7f08000b;
-        public static final int register_female=0x7f080015;
-        public static final int register_fullname=0x7f080011;
-        public static final int register_gender=0x7f080013;
-        public static final int register_male=0x7f080014;
-        public static final int register_password=0x7f08000c;
-        public static final int register_phone=0x7f080017;
-        public static final int register_retype_password=0x7f080012;
-        public static final int relationship_grid=0x7f080004;
-        public static final int txt_create_account=0x7f080010;
+        public static final int btn_forgot_password=0x7f080008;
+        public static final int btn_login=0x7f080007;
+        public static final int btn_openDate=0x7f08000d;
+        public static final int btn_sign_up=0x7f080009;
+        public static final int display_screen=0x7f080024;
+        public static final int finance_grid=0x7f080002;
+        public static final int gestureOverlayView1=0x7f08000e;
+        public static final int health_grid=0x7f080001;
+        public static final int imageView1=0x7f080004;
+        public static final int img_splash=0x7f08001c;
+        public static final int mainactivity_menu=0x7f080025;
+        public static final int register_agree_terms=0x7f080019;
+        public static final int register_already_login=0x7f08001a;
+        public static final int register_city=0x7f080017;
+        public static final int register_country=0x7f080018;
+        public static final int register_create_account=0x7f08001b;
+        public static final int register_dob=0x7f080015;
+        public static final int register_email=0x7f08000a;
+        public static final int register_female=0x7f080014;
+        public static final int register_fullname=0x7f080010;
+        public static final int register_gender=0x7f080012;
+        public static final int register_male=0x7f080013;
+        public static final int register_password=0x7f08000b;
+        public static final int register_phone=0x7f080016;
+        public static final int register_retype_password=0x7f080011;
+        public static final int relationship_grid=0x7f080003;
+        public static final int scrollView1=0x7f080023;
+        public static final int txt_create_account=0x7f08000f;
         public static final int txt_dashboard_header=0x7f080000;
-        public static final int txt_date=0x7f08000d;
-        public static final int txt_initialization=0x7f08001e;
-        public static final int txt_login_email=0x7f080006;
-        public static final int txt_login_password=0x7f080007;
+        public static final int txt_date=0x7f08000c;
+        public static final int txt_initialization=0x7f08001d;
+        public static final int txt_login_email=0x7f080005;
+        public static final int txt_login_password=0x7f080006;
+        public static final int welcome_premium_expire_notify_txt=0x7f080020;
+        public static final int welcome_premium_expire_txt=0x7f080021;
+        public static final int welcome_premium_ok_btn=0x7f080022;
+        public static final int welcome_premium_thanks_1_txt=0x7f08001f;
+        public static final int welcome_premium_thanks_txt=0x7f08001e;
     }
     public static final class layout {
         public static final int activity_dashboard=0x7f030000;
@@ -73,7 +78,8 @@ public final class R {
         public static final int activity_main=0x7f030003;
         public static final int activity_registration=0x7f030004;
         public static final int activity_splash_screen=0x7f030005;
-        public static final int test=0x7f030006;
+        public static final int activity_welcome_premium=0x7f030006;
+        public static final int test=0x7f030007;
     }
     public static final class menu {
         public static final int main_menu=0x7f070000;
@@ -100,9 +106,12 @@ public final class R {
         public static final int register_phone=0x7f050011;
         public static final int register_retype_password=0x7f05000b;
         public static final int string_dashboard_header=0x7f050003;
+        public static final int thank_you=0x7f050018;
         public static final int title_activity_login=0x7f050004;
         public static final int title_activity_registration=0x7f05000a;
         public static final int title_activity_splash_screen=0x7f050002;
+        public static final int welcome_premium_acknowledge=0x7f05001a;
+        public static final int welcome_premium_takeme=0x7f050019;
     }
     public static final class style {
         /** 

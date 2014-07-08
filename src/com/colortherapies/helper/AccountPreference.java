@@ -86,7 +86,7 @@ public class AccountPreference {
 
 	}
 
-	public boolean getBool(String key) {
+	public boolean getBool(String key,Boolean def) {
 
 		return this.pref.getBoolean(key, false);
 
@@ -106,10 +106,29 @@ public class AccountPreference {
 
 	}
 	
+	public boolean checkPreference() {
+
+		if (this.getBool("isFreshInstall",true)) {
+
+			return false; // Its a fresh install
+		} else if (this.get("Authorization") == null
+				|| this.get("username") == null
+				|| this.get("expiration") == null
+				|| this.get("activation") == null) {
+			return false; // Need to login again
+		} else {
+			return true; // Everything is alright
+		}
+
+	}
 	public boolean isLoggedIn(){
 		
 		return this.pref.getBoolean("isLogin",false);
 		
+	}
+	
+	public void Logout(){
+		this.setInitialPref();
 	}
 
 }

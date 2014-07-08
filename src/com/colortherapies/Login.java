@@ -239,7 +239,7 @@ public class Login extends Activity implements OnClickListener {
 			if (result != null) {
 				try {
 					if (result.getString("status").equals("ok")) {
-						HashMap<String, String> hash = new HashMap<>();
+						HashMap<String, String> hash = new HashMap<String, String>();
 						hash.put("Authorization",
 								result.getString("Authorization"));
 						hash.put("activation", result.getString("activation"));

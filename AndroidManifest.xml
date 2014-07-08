@@ -15,7 +15,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme" android:logo="@drawable/splash">
         <activity
             android:name="com.colortherapies.MainActivity"
             android:label="@string/app_name" >
@@ -23,13 +23,17 @@
         </activity>
         <activity
             android:name="com.colortherapies.SplashScreen"
-            android:label="@string/title_activity_splash_screen"
+            android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.colortherapies.WelcomePremium"
+            android:label="@string/thank_you">
+
         </activity>
         <activity
             android:name="com.colortherapies.Dashboard"
@@ -49,6 +53,12 @@
             android:name="com.colortherapies.Test"
             android:label="@string/app_name" >
             
+        </activity>
+        <activity
+            android:name="com.colortherapies.ThankYou"
+            android:label="@string/thank_you"
+            >
+
         </activity>
     </application>
 

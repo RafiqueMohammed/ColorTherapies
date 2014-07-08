@@ -3,7 +3,7 @@
 
     <string name="app_name">Color Therapies</string>
     <string name="hello_world">Color Therapy</string>
-    <string name="title_activity_splash_screen">Color Therphies</string>
+    <string name="title_activity_splash_screen">Color Therapies</string>
     <string name="string_dashboard_header">Your today\'s color prediction</string>
     <string name="title_activity_login">Login</string>
     <string name="login_username">Email</string>
@@ -25,4 +25,8 @@
     <string name="Create">Create Account</string>
     <string name="register_mandatory">* All the fields are mandatory</string>
 <string name="register_already_login">Already Registered ?</string>
+<string name="thank_you">Thank You </string>
+<string name="welcome_premium_takeme">Okay! Take me to the dashboard</string>
+<string name="welcome_premium_acknowledge">You are now our premium subscriber</string>
+    <string name="welcome_register_success">Your account created successfully</string>
 </resources>

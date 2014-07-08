@@ -4,9 +4,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -132,7 +135,7 @@ public class Registration extends Activity implements OnClickListener {
 		txt_re_pass = re_pass.getText().toString();
 		txt_phone = phone.getText().toString();
 		txt_dob = year+"-"+month+"-"+day;
-		L.t(Registration.this,"Your datepicker "+txt_dob);
+
 		txt_city = city.getText().toString();
 		txt_country = country.getText().toString();
 
@@ -251,8 +254,9 @@ public class Registration extends Activity implements OnClickListener {
 			param.add(new BasicNameValuePair("gender", txt_gender));
 			param.add(new BasicNameValuePair("city", city));
 			param.add(new BasicNameValuePair("country", country));
-			String output = "";
-			JSONObject json_output = null;
+			String output;
+
+            JSONObject json_output =null;
 			try {
 				UrlEncodedFormEntity entity = new UrlEncodedFormEntity(param);
 				post.setEntity(entity);
@@ -263,7 +267,7 @@ public class Registration extends Activity implements OnClickListener {
 				int status = response.getStatusLine().getStatusCode();
 				Log.d("ARR", "Status :" + status);
 				BufferedReader br;
-
+                L.l("I am in Try");
 				if (status == 201) {
 					br = new BufferedReader(new InputStreamReader(response
 							.getEntity().getContent()));
@@ -277,11 +281,12 @@ public class Registration extends Activity implements OnClickListener {
 							.put("Authorization",
 									response.getFirstHeader("Authorization")
 											.getValue());
-
+                    L.l("I am in status 201 Created");
 				} else if (status == 200 || status == 503) {
 					br = new BufferedReader(new InputStreamReader(response
 							.getEntity().getContent()));
-					String data = "", tmp = "";
+					String data = "";
+                    String tmp = "";
 					while ((tmp = br.readLine()) != null) {
 						data += tmp;
 					}
@@ -298,37 +303,13 @@ public class Registration extends Activity implements OnClickListener {
 					output = "{\"status\":\"no\",\"result\":\"Server is temporarily down. Please try again later\"}";
 					json_output = new JSONObject(output);
 				} 
-
-			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				output = "{\"status\":\"no\",\"result\":\"UnsupportedEncodingException Occured. Please Report Us\"}";
-				try {
-					json_output = new JSONObject(output);
-				} catch (JSONException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			} catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
-				output = "{\"status\":\"no\",\"result\":\"ClientProtocolException Occured. Please Report Us\"}";
-				try {
-					json_output = new JSONObject(output);
-				} catch (JSONException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+L.l("I am in status 200");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				output = "{\"status\":\"no\",\"result\":\"IOException Occured. Please Report Us\"}";
-				try {
-					json_output = new JSONObject(output);
-				} catch (JSONException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+                L.l("IOException "+e.toString());
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+                L.l("JSONException " + e.toString());
 			}
 
 			return json_output;
@@ -339,34 +320,44 @@ public class Registration extends Activity implements OnClickListener {
 			// TODO Auto-generated method stub
 			pd.dismiss();
 			try {
+if(result!=null){
+    if (result.getString("status").equals("no")) {
+        L.t(Registration.this, result.getString("result"));
 
-				if (result.getString("status").equals("no")) {
-					L.t(Registration.this, result.getString("result"));
+    } else if (result.getString("status").equals("ok")) {
 
-				} else if (result.getString("status").equals("ok")) {
+        HashMap<String, String> hash = new HashMap<String, String>();
+        hash.put("Authorization", result.getString("Authorization"));
+        hash.put("activation", result.getString("activation"));
+        hash.put("expiration", result.getString("expiration"));
+        hash.put("username", result.getString("email"));
+        hash.put("isPremium", result.getString("isPremium"));
 
-					HashMap<String, String> hash = new HashMap<>();
-					hash.put("Authorization", result.getString("Authorization"));
-					hash.put("activation", result.getString("activation"));
-					hash.put("expiration", result.getString("expiration"));
-					hash.put("username", result.getString("email"));
-					hash.put("isPremium", result.getString("isPremium"));
+        AccountPreference mypref = new AccountPreference(
+                Registration.this);
+        mypref.addAccountPreference(hash);
+       // mypref.printAccountPreference();
 
-					AccountPreference mypref = new AccountPreference(
-							Registration.this);
-					mypref.addAccountPreference(hash);
-					mypref.printAccountPreference();
-					Methods.AlertWithRedirect(Registration.this, "Thank You!",
-							"You account has been successfully registered",
-							new Dashboard(), true);
+/*        Methods.AlertWithRedirect(Registration.this, "Thank You!",
+                "You account has been successfully registered",
+                new Dashboard(), true);*/
+        Intent ty=new Intent(Registration.this,ThankYou.class);
+        ty.putExtra("expiry_date",new SimpleDateFormat("dd-MM-yyyy",Locale.getDefault()).format(new Date(Long.parseLong(result.getString("expiration")))));
+        startActivity(ty);
+        finish();
 
-				} else {
-					Log.d("ARR", "Else my result will be " + result.toString());
-					Log.d("ARR",
-							"Seperating status " + result.getString("status"));
-					Log.d("ARR",
-							"Seperating email " + result.getString("email"));
-				}
+    } else {
+        Log.d("ARR", "Else my result will be " + result.toString());
+        Log.d("ARR",
+                "Seperating status " + result.getString("status"));
+        Log.d("ARR",
+                "Seperating email " + result.getString("email"));
+    }
+}else{
+    L.t(Registration.this,"Result not found");
+
+}
+
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
